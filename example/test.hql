@@ -7,10 +7,9 @@ outputformat 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 location '/user/dev/seqtest/';
 
 set hive.execution.engine=${hiveconf:ENGINE};
-set hive.execution.engine;
 
 --!echo select * from seqtest;
---select * from seqtest;
+select * from seqtest;
 
 --!echo select filename from seqtest;
 --select filename from seqtest;
@@ -21,6 +20,6 @@ set hive.execution.engine;
 --!echo select filename, text from seqtest;
 --select filename, text from seqtest;
 
-add file identity.py;
-select transform(filename, text) using 'identity.py' as filename, rec
-from seqtest;
+--add file identity.py;
+--select transform(filename, text) using 'identity.py' as filename, rec
+--from seqtest;
