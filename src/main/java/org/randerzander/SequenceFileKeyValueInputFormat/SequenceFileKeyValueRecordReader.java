@@ -1,4 +1,4 @@
-package org.randerzander;
+package com.github.randerzander;
 
 import java.io.IOException;
 import org.apache.hadoop.conf.Configuration;
