@@ -51,6 +51,10 @@ public class SequenceFileKeyValueRecordReader<K, V> implements RecordReader<K, V
     boolean remaining = in.next((Writable) key, (Writable) value);
     
     if (remaining){
+      //Hive ignores keys and gives access only to their value
+      //Prepend the key onto the value to trick Hive into giving access to the key
+      //Hive's internal column separator is Ctrl-A "\001"
+      //Separating the key and value with "\001" makes Hive interpret the modified value as two columns: key & value
       ((Text)value).set(key.toString() + "\001" + value.toString()); 
     }
     if (pos >= end && in.syncSeen()) more = false;
