@@ -1,9 +1,22 @@
-add jar ../target/SequenceFileKeyValueInputFormat.jar;
+add jar ../target/SequenceFileKeyValueInputFormat-0.1.0-SNAPSHOT.jar;
 
-drop table if exists test;
-create external table test(filename string, text string)
-stored as inputformat 'SequenceFileKeyValueInputFormat'
+drop table if exists seqtest;
+create external table seqtest(filename string, text string)
+stored as inputformat 'org.randerzander.SequenceFileKeyValueInputFormat'
 outputformat 'org.apache.hadoop.mapred.SequenceFileOutputFormat'
 location '/user/dev/seqtest/';
 
-select * from test;
+set hive.execution.engine=${hiveconf:ENGINE};
+set hive.execution.engine;
+
+!echo select * from seqtest;
+select * from seqtest;
+
+!echo select filename from seqtest;
+select filename from seqtest;
+
+!echo select text from seqtest;
+select text from seqtest;
+
+!echo select filename, text from seqtest;
+select filename, text from seqtest;

@@ -1,3 +1,5 @@
+package org.randerzander;
+
 import java.io.IOException;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;

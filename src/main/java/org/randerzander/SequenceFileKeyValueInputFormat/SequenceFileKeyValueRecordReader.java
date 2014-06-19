@@ -1,3 +1,5 @@
+package org.randerzander;
+
 import java.io.IOException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -48,7 +50,9 @@ public class SequenceFileKeyValueRecordReader<K, V> implements RecordReader<K, V
     long pos = in.getPosition();
     boolean remaining = in.next((Writable) key, (Writable) value);
     
-    if (remaining) ((Text)value).set(key.toString() + "\001" + value.toString()); 
+    if (remaining){
+      ((Text)value).set(key.toString() + "\001" + value.toString()); 
+    }
     if (pos >= end && in.syncSeen()) more = false;
     else more = remaining;
     return more;
