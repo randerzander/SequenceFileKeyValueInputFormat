@@ -1,6 +1,7 @@
 package com.github.randerzander;
 
 import java.io.IOException;
+import java.io.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -24,7 +25,6 @@ public class SequenceFileKeyValueRecordReader<K, V> implements RecordReader<K, V
     this.in = new SequenceFile.Reader(fs, path, conf);
     this.end = split.getStart() + split.getLength();
     this.conf = conf;
-
     if (split.getStart() > in.getPosition()) in.sync(split.getStart());
     this.start = in.getPosition();
     more = start < end;

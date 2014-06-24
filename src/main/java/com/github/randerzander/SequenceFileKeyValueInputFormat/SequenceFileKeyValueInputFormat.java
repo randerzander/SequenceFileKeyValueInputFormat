@@ -15,9 +15,7 @@ import org.apache.hadoop.mapred.RecordReader;
 import org.apache.hadoop.mapred.Reporter;
 
 public class SequenceFileKeyValueInputFormat<K, V> extends FileInputFormat<K, V> {
-  public SequenceFileKeyValueInputFormat() {
-    setMinSplitSize(SequenceFile.SYNC_INTERVAL);
-  }
+  public SequenceFileKeyValueInputFormat() { setMinSplitSize(SequenceFile.SYNC_INTERVAL); }
   
   @Override
   protected FileStatus[] listStatus(JobConf job) throws IOException {
