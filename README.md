@@ -5,9 +5,9 @@ I needed to parse a lot of text files in their entirety without splitting up the
 I needed access to the filenames, so I wrote SequenceFileKeyValueInputFormat.
 
 Example:
-`
+```
 cd example
 hadoop fs -put data .
 mahout seqdirectory --input data --output seqtest
 hive -f test.hql
-`
+```
