@@ -4,7 +4,7 @@ I needed to parse a lot of text files in their entirety without splitting up the
 
 I needed access to the filenames, so I wrote SequenceFileKeyValueInputFormat.
 
-**Warning**: Hive uses the Ctrl+A character ("\001") to recognize separate columns. If your SequenceFile contains Ctrl+A chars in its keys or values, this may not work for you.
+**Warning**: Hive uses the Ctrl+A character ("\001") to recognize separate columns. This impl of RecordReader will replace all "\001"s with "\000"s. If your SequenceFile contains Ctrl+A chars in its keys or values, this may not work for you.
 
 Example:
 ```

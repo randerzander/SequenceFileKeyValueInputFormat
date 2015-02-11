@@ -55,7 +55,8 @@ public class SequenceFileKeyValueRecordReader<K, V> implements RecordReader<K, V
       //Prepend the key onto the value to trick Hive into giving access to the key
       //Hive's internal column separator is Ctrl-A "\001"
       //Separating the key and value with "\001" makes Hive interpret the modified value as two columns: key & value
-      ((Text)value).set(key.toString() + "\001" + value.toString()); 
+      String fileContents = value.toString().replace("\001", "\000");
+      ((Text)value).set(key.toString() + "\001" + fileContents);
     }
     if (pos >= end && in.syncSeen()) more = false;
     else more = remaining;
